@@ -4,8 +4,8 @@
 # https://dumps.wikimedia.org/backup-index.html
 
 download.file(
-  "https://dumps.wikimedia.org/ptwiki/20161101/ptwiki-20161101-pages-articles.xml.bz2",
-  "ptwiki-20161101-pages-articles.xml.bz2"
+  "https://dumps.wikimedia.org/ptwiki/latest/ptwiki-latest-pages-articles.xml.bz2",
+  "ptwiki-latest-pages-articles.xml.bz2"
 )
 
 
@@ -13,7 +13,7 @@ download.file(
 # Comando encontrado aqui:
 # http://superuser.com/questions/480950/how-to-decompress-a-bz2-file
 
-system("bzip2 -dk ptwiki-20161101-pages-articles.xml.bz2")
+system("bzip2 -dk ptwiki-latest-pages-articles.xml.bz2")
 
 
 # Pré-Processar -----------------------------------------------------------
@@ -28,10 +28,10 @@ system("bzip2 -dk ptwiki-20161101-pages-articles.xml.bz2")
 # in the web browser is displayed.  Tables are removed.  Image captions are 
 # preserved.  Links are converted to normal text.  Digits are spelled out.
 
-system("perl wikifil.pl ptwiki-20161101-pages-articles.xml > ptwiki-20161101-pages-articles.txt")
+system("perl wikifil.pl ptwiki-latest-pages-articles.xml > ptwiki-latest-pages-articles.txt")
 
 
 # Tokenizar em sentenças --------------------------------------------------
 
-x <- readLines("ptwiki-20161101-pages-articles.txt", n = 1)
+x <- readLines("ptwiki-latest-pages-articles.txt", n = 1)
 
